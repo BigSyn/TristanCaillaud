@@ -1,0 +1,265 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.site{font-family:var(--font-sans),sans-serif;background:#0a0a0c;color:#e2dfd8;overflow:hidden}
+.hero-wrap{background:#0a0a0c;border-bottom:0.5px solid #1e1e22;padding:0}
+.hero-top{display:flex;align-items:stretch;min-height:220px}
+.hero-left{flex:1;padding:2.5rem 2.5rem 2rem;display:flex;flex-direction:column;justify-content:space-between}
+.hero-right{width:200px;background:#0f0f13;border-left:0.5px solid #1e1e22;display:flex;align-items:center;justify-content:center}
+.avatar-ring{width:90px;height:90px;border-radius:50%;border:1.5px solid #534AB7;display:flex;align-items:center;justify-content:center}
+.avatar-inner{width:76px;height:76px;border-radius:50%;background:#1a1830;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.avatar-img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-name{font-size:32px;font-weight:500;color:#f0ede6;letter-spacing:-0.5px;margin-bottom:6px}
+.hero-sub{font-size:14px;color:#5F5E5A;letter-spacing:0.04em;text-transform:uppercase}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+.chip{font-size:11px;padding:4px 12px;border-radius:20px;font-weight:500;border:0.5px solid}
+.chip-purple{background:#16142a;color:#AFA9EC;border-color:#3C3489}
+.chip-teal{background:#061a14;color:#5DCAA5;border-color:#0F6E56}
+.chip-amber{background:#1a1100;color:#EF9F27;border-color:#854F0B}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid #1e1e22}
+.stat-cell{padding:1rem 2.5rem;border-right:0.5px solid #1e1e22}
+.stat-cell:last-child{border-right:none}
+.stat-num{font-size:22px;font-weight:500;color:#AFA9EC}
+.stat-lbl{font-size:11px;color:#5F5E5A;margin-top:2px;text-transform:uppercase;letter-spacing:0.05em}
+nav{background:#0f0f13;border-bottom:0.5px solid #1e1e22;display:flex;padding:0 2rem;overflow-x:auto}
+.nb{background:none;border:none;border-bottom:2px solid transparent;color:#5F5E5A;font-size:13px;font-family:inherit;padding:14px 16px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:color .2s,border-color .2s}
+.nb.on,.nb:hover{color:#e2dfd8;border-bottom-color:#534AB7}
+.nb i{font-size:16px}
+.body{padding:2rem 2.5rem;background:#0a0a0c}
+.sec{display:none}
+.sec.on{display:block}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:#0f0f13;border:0.5px solid #1e1e22;border-radius:12px;padding:1.25rem 1.5rem}
+.card-wide{grid-column:span 2}
+.card h3{font-size:14px;font-weight:500;color:#f0ede6;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card h3 i{font-size:18px;color:#534AB7}
+.card p{font-size:14px;color:#888780;line-height:1.7}
+.lbl{font-size:11px;color:#5F5E5A;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
+.sk-row{margin-bottom:12px}
+.sk-head{display:flex;justify-content:space-between;font-size:13px;color:#888780;margin-bottom:5px}
+.sk-head span:last-child{color:#534AB7;font-weight:500}
+.sk-bg{background:#1a1a1e;border-radius:3px;height:4px}
+.sk-fill{height:4px;border-radius:3px;background:#534AB7}
+.game-card{background:#0f0f13;border:0.5px solid #1e1e22;border-radius:12px;padding:1rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.game-icon-wrap{width:48px;height:48px;border-radius:10px;background:#16142a;border:0.5px solid #3C3489;display:flex;align-items:center;justify-content:center;font-size:22px}
+.game-card h4{font-size:13px;font-weight:500;color:#f0ede6}
+.game-card span{font-size:11px;color:#5F5E5A}
+.platform{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;background:#1a1a1e;color:#5F5E5A;border:0.5px solid #2a2a2e;margin-top:2px}
+.int-card{background:#0f0f13;border:0.5px solid #1e1e22;border-radius:12px;padding:1rem;display:flex;align-items:center;gap:12px}
+.int-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.int-icon i{font-size:20px}
+.int-icon.purple{background:#16142a;color:#534AB7}
+.int-icon.teal{background:#061a14;color:#1D9E75}
+.int-icon.amber{background:#1a1100;color:#BA7517}
+.int-icon.blue{background:#021530;color:#378ADD}
+.int-text h4{font-size:13px;font-weight:500;color:#f0ede6;margin-bottom:2px}
+.int-text p{font-size:12px;color:#5F5E5A;line-height:1.5}
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;margin:3px 3px 0 0}
+.tag-p{background:#16142a;color:#AFA9EC;border:0.5px solid #3C3489}
+.tag-t{background:#061a14;color:#5DCAA5;border:0.5px solid #0F6E56}
+.tag-b{background:#021530;color:#85B7EB;border:0.5px solid #185FA5}
+.tag-a{background:#1a1100;color:#EF9F27;border:0.5px solid #854F0B}
+.divider{height:0.5px;background:#1e1e22;margin:16px 0}
+.quote{border-left:2px solid #534AB7;border-radius:0;padding:0.75rem 1rem;font-size:14px;color:#888780;font-style:italic;line-height:1.7;background:#0d0d11;border-radius:0 8px 8px 0}
+</style>
+<h2 class="sr-only">Site de Monsieur Tristan Caillaud — étudiant IT, gamer, passionné de technologie basé à Haguenau</h2>
+<div class="site">
+  <div class="hero-wrap">
+    <div class="hero-top">
+      <div class="hero-left">
+        <div>
+          <div class="hero-sub">Portfolio personnel</div>
+          <h1 class="hero-name">Tristan Caillaud</h1>
+          <div style="font-size:15px;color:#888780;margin-top:4px">Étudiant en IT · Gamer · Bidouilleur de technos</div>
+          <div style="font-size:13px;color:#3C3489;margin-top:8px;display:flex;align-items:center;gap:5px"><i class="ti ti-map-pin" aria-hidden="true" style="font-size:14px"></i> Haguenau, Grand Est, France</div>
+        </div>
+        <div class="hero-chips">
+          <span class="chip chip-purple"><i class="ti ti-cpu" aria-hidden="true" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Support IT</span>
+          <span class="chip chip-teal"><i class="ti ti-network" aria-hidden="true" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Réseaux</span>
+          <span class="chip chip-amber"><i class="ti ti-device-gamepad-2" aria-hidden="true" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Gaming</span>
+          <span class="chip chip-purple"><i class="ti ti-shield" aria-hidden="true" style="font-size:12px;vertical-align:-1px;margin-right:3px"></i>Sécurité</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="avatar-ring"><div class="avatar-inner"><img src="photo.jpg" alt="Photo de Tristan Caillaud" class="avatar-img"></div></div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-cell"><div class="stat-num">6+</div><div class="stat-lbl">Jeux favoris</div></div>
+      <div class="stat-cell"><div class="stat-num">3</div><div class="stat-lbl">Plateformes</div></div>
+      <div class="stat-cell"><div class="stat-num">IT</div><div class="stat-lbl">Spécialité</div></div>
+    </div>
+  </div>
+
+  <nav>
+    <button class="nb on" onclick="show('about',this)"><i class="ti ti-user" aria-hidden="true"></i> À propos</button>
+    <button class="nb" onclick="show('games',this)"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i> Jeux</button>
+    <button class="nb" onclick="show('interests',this)"><i class="ti ti-sparkles" aria-hidden="true"></i> Centres d'intérêt</button>
+    <button class="nb" onclick="show('skills',this)"><i class="ti ti-code" aria-hidden="true"></i> Compétences IT</button>
+  </nav>
+
+  <div class="body">
+
+    <div id="about" class="sec on">
+      <div class="row">
+        <div class="card card-wide">
+          <div class="quote">Passionné par la tech depuis toujours — j'aime autant déployer un réseau que m'aventurer sous les océans de Subnautica à 2h du matin.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card">
+          <h3><i class="ti ti-user" aria-hidden="true"></i> Qui je suis</h3>
+          <p>Étudiant en informatique à Haguenau, je me spécialise dans le support IT et les infrastructures réseau et surtout dans le domaine de la sécurité, Robotisation et Automatisation. J'ai un goût particulier pour les défis techniques concrets — configuration, déploiement, dépannage.</p>
+        </div>
+        <div class="card">
+          <h3><i class="ti ti-bolt" aria-hidden="true"></i> En ce moment</h3>
+          <p>Je travaille sur des projets de déploiement iPad, d'infrastructure réseau fibre/Wi-Fi et de sécurité des systèmes. Toujours en train d'apprendre quelque chose de nouveau.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card">
+          <h3><i class="ti ti-map-pin" aria-hidden="true"></i> Localisation</h3>
+          <p style="margin-bottom:10px">Haguenau, Grand Est</p>
+          <span class="tag tag-p">France</span>
+          <span class="tag tag-t">Disponible</span>
+        </div>
+        <div class="card">
+          <h3><i class="ti ti-stack" aria-hidden="true"></i> Stack & outils</h3>
+          <span class="tag tag-p">macOS</span>
+          <span class="tag tag-b">iOS / iPadOS</span>
+          <span class="tag tag-t">Wi-Fi</span>
+          <span class="tag tag-a">Fibre optique</span>
+          <span class="tag tag-p">2FA</span>
+          <span class="tag tag-t">Gmail</span>
+          <span class="tag tag-b">Linux</span>
+          <span class="tag tag-p">Windows</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="games" class="sec">
+      <div class="lbl" style="margin-bottom:16px">Ma ludothèque</div>
+      <div class="row3">
+        <div class="game-card">
+          <div class="game-icon-wrap">🌾</div>
+          <h4>Farming Simulator 25</h4>
+          <span class="platform">PC / Console</span>
+        </div>
+        <div class="game-card">
+          <div class="game-icon-wrap">🌊</div>
+          <h4>Subnautica</h4>
+          <span class="platform">PC</span>
+        </div>
+        <div class="game-card">
+          <div class="game-icon-wrap">💊</div>
+          <h4>Schedule 1</h4>
+          <span class="platform">PC</span>
+        </div>
+        <div class="game-card">
+          <div class="game-icon-wrap">🏝️</div>
+          <h4>Animal Crossing: NH</h4>
+          <span class="platform">Nintendo Switch</span>
+        </div>
+        <div class="game-card">
+          <div class="game-icon-wrap">📱</div>
+          <h4>Tomodachi Life</h4>
+          <span class="platform">Nintendo</span>
+        </div>
+        <div class="game-card">
+          <div class="game-icon-wrap">💛</div>
+          <h4>Undertale</h4>
+          <span class="platform">PC</span>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="card">
+          <h3><i class="ti ti-device-nintendo" aria-hidden="true"></i> Plateformes</h3>
+          <span class="tag tag-p">Nintendo Switch</span>
+          <span class="tag tag-b">PC</span>
+          <span class="tag tag-t">Console</span>
+        </div>
+        <div class="card">
+          <h3><i class="ti ti-heart" aria-hidden="true"></i> Genres préférés</h3>
+          <span class="tag tag-t">Simulation</span>
+          <span class="tag tag-b">Aventure</span>
+          <span class="tag tag-p">RPG</span>
+          <span class="tag tag-a">Indie</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="interests" class="sec">
+      <div class="lbl" style="margin-bottom:16px">Ce qui me passionne</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="int-card">
+          <div class="int-icon purple"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i></div>
+          <div class="int-text"><h4>Jeux vidéo</h4><p>PC, Nintendo Switch, simulation, aventure et RPG indie — toujours une nouvelle histoire à explorer.</p></div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon teal"><i class="ti ti-cpu" aria-hidden="true"></i></div>
+          <div class="int-text"><h4>Informatique & bidouille</h4><p>Configuration réseau, déploiement d'appareils, dépannage — j'adore comprendre comment les systèmes fonctionnent.</p></div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon blue"><i class="ti ti-network" aria-hidden="true"></i></div>
+          <div class="int-text"><h4>Réseaux & infrastructure</h4><p>Fibre optique, Wi-Fi, routage — les coulisses d'internet me fascinent autant que l'internet lui-même.</p></div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon amber"><i class="ti ti-barbell" aria-hidden="true"></i></div>
+          <div class="int-text"><h4>Fitness & nutrition</h4><p>Sèche, alimentation équilibrée, progression — prendre soin de son corps comme de ses systèmes.</p></div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon purple"><i class="ti ti-shield-lock" aria-hidden="true"></i></div>
+          <div class="int-text"><h4>Sécurité informatique</h4><p>2FA, gestion des mots de passe, sécurité des réseaux — la vigilance comme seconde nature.</p></div>
+        </div>
+          <div class="int-card">
+          <div class="int-icon orange"><i class="ti ti-robot" aria-hidden="true"></i></div>
+          <div class="int-text"><h4>Robotisation et Automatisation</h4><p>Conception, programmation et déploiement de systèmes robotiques et automatisés — transformer les processus manuels en solutions efficaces.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="skills" class="sec">
+      <div class="row">
+        <div class="card">
+          <div class="lbl">Compétences techniques</div>
+          <div class="sk-row"><div class="sk-head"><span>Support IT & déploiement</span><span>90%</span></div><div class="sk-bg"><div class="sk-fill" style="width:90%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span>Systèmes (macOS, iOS, Win)</span><span>85%</span></div><div class="sk-bg"><div class="sk-fill" style="width:85%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span>Réseaux (Wi-Fi, fibre, routage)</span><span>80%</span></div><div class="sk-bg"><div class="sk-fill" style="width:80%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span>Sécurité & authentification</span><span>75%</span></div><div class="sk-bg"><div class="sk-fill" style="width:75%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span>Électronique & signaux</span><span>70%</span></div><div class="sk-bg"><div class="sk-fill" style="width:70%"></div></div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card">
+            <div class="lbl">Domaines clés</div>
+            <span class="tag tag-p">Support IT</span>
+            <span class="tag tag-t">Réseau</span>
+            <span class="tag tag-b">Sécurité</span>
+            <span class="tag tag-a">Électronique</span>
+            <span class="tag tag-p">Déploiement</span>
+            <span class="tag tag-t">Fibre optique</span>
+            <span class="tag tag-b">Wi-Fi</span>
+          </div>
+          <div class="card">
+            <div class="lbl">Environnements</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+              <div style="display:flex;align-items:center;gap:8px"><i class="ti ti-apple" aria-hidden="true" style="font-size:16px;color:#534AB7"></i><span style="font-size:13px;color:#888780">Apple — macOS, iOS, iPadOS</span></div>
+              <div style="display:flex;align-items:center;gap:8px"><i class="ti ti-brand-windows" aria-hidden="true" style="font-size:16px;color:#1D9E75"></i><span style="font-size:13px;color:#888780">Windows</span></div>
+              <div style="display:flex;align-items:center;gap:8px"><i class="ti ti-wifi" aria-hidden="true" style="font-size:16px;color:#BA7517"></i><span style="font-size:13px;color:#888780">Infrastructure réseau</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+function show(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
