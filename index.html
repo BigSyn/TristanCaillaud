@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -62,6 +63,67 @@ nav{background:#0f0f13;border-bottom:0.5px solid #1e1e22;display:flex;padding:0 
 .tag-a{background:#1a1100;color:#EF9F27;border:0.5px solid #854F0B}
 .divider{height:0.5px;background:#1e1e22;margin:16px 0}
 .quote{border-left:2px solid #534AB7;border-radius:0;padding:0.75rem 1rem;font-size:14px;color:#888780;font-style:italic;line-height:1.7;background:#0d0d11;border-radius:0 8px 8px 0}
+
+@media(max-width:900px){
+.hero-top{flex-direction:column}
+.hero-right{
+width:100%;
+min-height:180px;
+border-left:none;
+border-top:0.5px solid #1e1e22;
+padding:20px;
+}
+.hero-left{
+padding:1.5rem;
+}
+.hero-name{
+font-size:26px;
+}
+.body{
+padding:1rem;
+}
+.row,.row3{
+grid-template-columns:1fr;
+}
+.card-wide{
+grid-column:span 1;
+}
+nav{
+padding:0 0.5rem;
+}
+.nb{
+padding:14px 12px;
+font-size:14px;
+}
+.hero-stats{
+grid-template-columns:1fr;
+}
+.stat-cell{
+border-right:none;
+border-bottom:0.5px solid #1e1e22;
+}
+}
+
+@media(max-width:500px){
+.hero-name{
+font-size:22px;
+}
+.hero-sub{
+font-size:12px;
+}
+.card{
+padding:1rem;
+}
+.avatar-ring{
+width:110px;
+height:110px;
+}
+.avatar-inner{
+width:94px;
+height:94px;
+}
+}
+
 </style>
 <h2 class="sr-only">Site de Monsieur Tristan Caillaud — étudiant CIEL, gamer, passionné de CyberTechnologie basé à Haguenau</h2>
 <div class="site">
@@ -82,7 +144,7 @@ nav{background:#0f0f13;border-bottom:0.5px solid #1e1e22;display:flex;padding:0 
         </div>
       </div>
       <div class="hero-right">
-        <div class="avatar-ring"><div class="avatar-inner"><img src="C:\Users\Eleve\OneDrive\Bureau\Code\Images\unnamed.jpg" alt="Photo de Tristan Caillaud" class="avatar-img"></div></div>
+        <div class="avatar-ring"><div class="avatar-inner"><img src="photo.jpg" alt="Photo de Tristan Caillaud" class="avatar-img"></div></div>
       </div>
     </div>
     <div class="hero-stats">
